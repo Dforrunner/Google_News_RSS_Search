@@ -1,6 +1,6 @@
 const fs = require("fs");
 const parseString = require('xml2js').parseString;
-const util = require('util');
+
 
 // Helper function that renders html templates using the build in node js module
 function renderTemplate(html, res) {
