@@ -1,16 +1,4 @@
-const fs = require("fs");
 const parseString = require('xml2js').parseString;
-
-
-// Helper function that renders html templates using the build in node js module
-function renderTemplate(html, res) {
-    return fs.readFile(html, (err, data) => {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(data);
-        res.end();
-    });
-}
-
 
 /**
  * Helper Function that parses XML to JSON.
@@ -66,4 +54,4 @@ function parseXML2JSON(xml, callback){
     })
 }
 
-module.exports = {renderTemplate, parseXML2JSON};
+module.exports = {parseXML2JSON};
