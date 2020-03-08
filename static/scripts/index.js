@@ -1,4 +1,4 @@
-document.getElementById('form').onsubmit = () => {
+document.getElementById('searchForm').onsubmit = () => {
     const searchTerm = document.getElementById("search").value;
     // Getting the RSS container
     let rssList = document.getElementById('rss');

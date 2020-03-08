@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#indexHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  box-shadow: -2px 0 5px 2px gray;
+  padding-bottom: 20px;
+  background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+}
+#indexHeader h1 {
+  color: white;
+}
+
+#searchForm input:focus, #searchForm button:focus {
+  outline: none;
+}
+#searchForm input[type=search] {
+  width: 50%;
+  height: 40px;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 18px;
+  border: 1px solid #6f878f;
+}
+#searchForm button {
+  display: inline-block;
+  height: 40px;
+  width: 80px;
+  border-radius: 20px;
+  border: 1px solid #6f878f;
+  text-align: center;
+  font-size: 17px;
+  cursor: pointer;
+}
+#searchForm button:hover {
+  background-color: #d0d1ff;
+  box-shadow: 0 0 5px 1px gray;
+  border: none;
+}
+
+#rss {
+  margin-top: 180px;
+  padding-right: 30px;
+  text-align: center;
+}
+#rss ol {
+  margin: 0;
+  padding: 20px;
+}
+#rss li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  height: 40px;
+  padding-top: 10px;
+  border-top: 1px solid #4e4e4e;
+  font-size: 14px;
+}
+#rss li:hover {
+  background-color: #cdfff5;
+}
+#rss li cite {
+  color: rgba(74, 74, 74, 0.86);
+}
+
+/*# sourceMappingURL=main.css.map */
