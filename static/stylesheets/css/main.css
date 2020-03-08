@@ -1,21 +1,12 @@
-body {
-  font-family: Arial, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 #indexHeader {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   width: 100vw;
-  box-shadow: -2px 0 5px 2px gray;
   padding-bottom: 20px;
   background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
 }
@@ -51,7 +42,7 @@ body {
 }
 
 #rss {
-  margin-top: 180px;
+  margin-top: 195px;
   padding-right: 30px;
   text-align: center;
 }
@@ -74,6 +65,41 @@ body {
 }
 #rss li cite {
   color: rgba(74, 74, 74, 0.86);
+}
+
+nav {
+  display: flex;
+  flex-direction: row-reverse;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  z-index: 10;
+  background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+}
+nav a {
+  display: inline-block;
+  height: 60%;
+  width: 70px;
+  padding: 5px;
+  margin: 15px 10px 0 0;
+  text-decoration: none !important;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.38);
+}
+nav a:hover {
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 3px 1px gray;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /*# sourceMappingURL=main.css.map */

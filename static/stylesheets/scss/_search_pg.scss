@@ -5,11 +5,11 @@
   text-align: center;
 
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   width: 100vw;
 
-  box-shadow: -2px 0 5px 2px gray;
+
   padding-bottom: 20px;
   background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
 
@@ -51,9 +51,10 @@
 }
 
 #rss {
-  margin-top: 180px;
+  margin-top: 195px;
   padding-right: 30px;
   text-align: center;
+
 
   ol {
     margin: 0;
