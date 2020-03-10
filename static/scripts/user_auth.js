@@ -10,20 +10,6 @@ function userRegister() {
         msg.innerHTML = "";
     });
 
-    // Basic client side form validations
-    if(password !== password2){
-        document.getElementById('password2Error').innerText = 'Passwords must match.';
-        validForm = false;
-    }
-    if (!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))){
-        document.getElementById('emailError').innerText = 'Invalid Email.';
-        validForm = false;
-    }
-    if(password.length < 6){
-        document.getElementById('passError').innerText = 'Password must me 6 or more characters long.';
-        validForm = false;
-    }
-
     // Posting form data once if the form is valid
     if(validForm){
         fetch('/users/register',{
