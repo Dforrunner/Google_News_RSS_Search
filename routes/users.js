@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 const bcrypt = require('bcryptjs');
+
 const { User, Article} = require('../models');
 
 // Login Page
@@ -50,25 +51,35 @@ router.post('/register', (req, res) => {
     if(password.length < 6 && password)
         Object.assign(errors,{errors: true, password2Error: "Password must be at least 6 characters."});
 
-    // Check if user exists
-    db.query(User.getEmail, email, (err, result) => {
-        if(err) throw err;
-        if(result.length > 0){console.log(result);
-            if(result[0] === email){
-                errors.errors = true;
-                errors.registered = true;
-            }
-        }
-    });
 
     if(errors.errors){
         res.json(errors);
     }else{
-        db.query(User.create, [[name, email, password]], (err, result) =>{
+        // Check if user exists
+        db.query(User.getEmail, email, (err, result) => {
             if(err) throw err;
-            console.log(result);
+            // If we get a result that means the email is already registered
+            if(result.length > 0){
+                // If registered set registered and errors to true and return error response
+                errors.errors = true;
+                errors.registered = true;
+                res.json(errors);
+            }else{
+                // If there are no errors and the user is not registered, then register the user
+                // But first  encrypt the password using bcrypt
+                bcrypt.genSalt(10, (err, salt) =>
+                    bcrypt.hash(password, salt, (err, hash) => {
+                        if(err) throw err;
+                        db.query(User.create, [name, email, hash], (err, result) =>{
+                            if(err) throw err;
+                            console.log('New user created...');
+                            req.flash('success_msg', 'You are now registered. Try to login.');
+                            res.status(200).json({redirect: '/users/login'});
+                        });
+                    })
+                );
+            }
         });
-        res.json('good');
     }
 
 });

@@ -12,8 +12,8 @@ const User = {
                 `
     },
     create: `
-        INSERT INTO Articles (name, email, password) 
-        VALUES (?)
+        INSERT INTO user (name, email, password) 
+        VALUES (?, ?, ?)
     `,
     getEmail: `
         SELECT email
@@ -38,7 +38,11 @@ const Article = {
                     )
                 `
     },
-    create: `
+    createOne: `
+        INSERT INTO Articles (pubDate, title, link, source, UserID) 
+        VALUES (?, ?, ?, ?, ?)
+    `,
+    createMultiple: `
         INSERT INTO Articles (pubDate, title, link, source, UserID) 
         VALUES ?
     `

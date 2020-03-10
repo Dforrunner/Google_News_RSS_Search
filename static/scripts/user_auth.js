@@ -1,8 +1,18 @@
+function bootstrapAlert(type, msg){
+    return `
+                <div class="alert alert-${type} alert-dismissible fade show error-msg hidden" role="alert" id="msgBlock">
+                    ${msg}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            `
+}
+
 function userRegister() {
     const registrationForm = document.getElementById('userRegistration');
     const formData = new FormData(registrationForm);  // Get form data
     const formEntries = Object.fromEntries(formData); // Get form entries from form data
-    const {name, email, password, password2} = formEntries;
     let validForm = true;
 
     // Reset error messages
@@ -30,13 +40,14 @@ function userRegister() {
                         }
                         if(result.registered){
                             let msgBlock = document.getElementById('msgBlock');
-                            msgBlock.innerHTML = 'This email is already registered';
-                            msgBlock.classList.add('alert-warning');
+                            msgBlock.innerHTML = bootstrapAlert('warning', 'This email is already registered');
                         }
                     }
                 }else{
-                    registrationForm.reset();
-                    console.log(result);
+                    // If the user is created without an issue the API will return a redirect
+                    // path to redirect to.
+                    if(result.redirect)
+                        window.location = result.redirect
                 }
             })
             .catch(error => {
