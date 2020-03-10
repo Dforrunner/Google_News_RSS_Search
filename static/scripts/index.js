@@ -1,4 +1,4 @@
-document.getElementById('searchForm').onsubmit = () => {
+function searchForm() {
     const searchTerm = document.getElementById("search").value;
     // Getting the RSS container
     let rssList = document.getElementById('rss');
@@ -43,4 +43,4 @@ document.getElementById('searchForm').onsubmit = () => {
             console.log(error);
         });
     return false;
-};
+}

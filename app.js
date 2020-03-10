@@ -6,6 +6,12 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
+// Express body parser
+app.use(express.urlencoded({ extended: true }));
+
+// Parse application/json
+app.use(express.json());
+
 // ROUTES
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
@@ -22,7 +28,9 @@ app.use((req, res)=>{
     res.render("Error404");
 });
 
-app.listen(8000, () =>{
+// Listening port
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () =>{
     console.log("Server running at http://127.0.0.1:8000/");
 });
 

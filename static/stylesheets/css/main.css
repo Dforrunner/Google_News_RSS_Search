@@ -102,4 +102,13 @@ nav a:hover {
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.error-msg {
+  color: darkred;
+}
+
 /*# sourceMappingURL=main.css.map */

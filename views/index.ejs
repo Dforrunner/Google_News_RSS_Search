@@ -1,9 +1,9 @@
 <header id="indexHeader">
-    <h1>Search Google News RSS Feed</h1>
+    <h1>Google News RSS Feed</h1>
 
-    <form id="searchForm">
-        <label for="search">Search a topic:</label>
-        <input type="search" name="search" id="search" required>
+    <form id="searchForm" onsubmit="return searchForm()">
+        <label for="search"></label>
+        <input type="search" name="search" id="search" placeholder="Search a topic" required>
         <button type="submit">Search</button>
     </form>
 

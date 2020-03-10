@@ -54,4 +54,4 @@ function parseXML2JSON(xml, callback){
     })
 }
 
-module.exports = {parseXML2JSON};
+module.exports = parseXML2JSON;
