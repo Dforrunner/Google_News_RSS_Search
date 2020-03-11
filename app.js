@@ -2,11 +2,18 @@ const express = require("express");
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
 const app = express();
+
+// Passport config
+require('./config/passport')(passport);
 
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
+
+// Static files
+app.use(express.static('static'));
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
@@ -19,22 +26,23 @@ app.use(session({
     saveUninitialized: true
 }));
 
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Connect flash
 app.use(flash());
 
 // Global variables
 app.use((req, res, next) =>{
     res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
     next();
 });
 
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
-
-// Specifying static file directory path to serve static files
-app.use(express.static('static'));
 
 // 404 Page not found Response
 app.use((req, res)=>{

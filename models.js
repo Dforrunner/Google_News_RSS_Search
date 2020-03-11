@@ -15,8 +15,14 @@ const User = {
         INSERT INTO user (name, email, password) 
         VALUES (?, ?, ?)
     `,
-    getEmail: `
-        SELECT email
+    getById: `
+        SELECT *
+        FROM user
+        WHERE UserID = ?
+        LIMIT 1
+    `,
+    getUserByEmail: `
+        SELECT *
         FROM user
         WHERE email = ?
         LIMIT 1

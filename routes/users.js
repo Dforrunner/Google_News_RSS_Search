@@ -2,16 +2,41 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 const bcrypt = require('bcryptjs');
-
+const passport = require('passport');
+const { ensureAuthenticated } = require('../config/auth');
 const { User, Article} = require('../models');
+
+// User profile
+router.get('/profile', ensureAuthenticated, (req, res) =>
+    res.render('users/profile', {
+        name: req.user.name
+    })
+);
 
 // Login Page
 router.get('/login', (req, res) =>  res.render('users/login'));
 
+// Login handle
+router.post('/login', passport.authenticate('local', {
+        successRedirect: '/users/profile',
+        failureRedirect: '/users/login',
+        failureFlash: true
+    }), (req, res) => {
+        console.log("hello");
+        req.session.cookie.expires = false;
+        res.redirect('/');
+    });
+
+// Logout handle
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
+
 // Register Page
 router.get('/register', (req, res) =>  res.render('users/register'));
 
-// Register Handle
+// Register handle
 router.post('/register', (req, res) => {
     const {name, email, password, password2} = req.body;
     let errors = {
@@ -56,10 +81,10 @@ router.post('/register', (req, res) => {
         res.json(errors);
     }else{
         // Check if user exists
-        db.query(User.getEmail, email, (err, result) => {
+        db.query(User.getUserByEmail, email, (err, result) => {
             if(err) throw err;
             // If we get a result that means the email is already registered
-            if(result.length > 0){
+            if(result.length){
                 // If registered set registered and errors to true and return error response
                 errors.errors = true;
                 errors.registered = true;
@@ -81,8 +106,9 @@ router.post('/register', (req, res) => {
             }
         });
     }
-
 });
+
+
 
 
 module.exports = router;

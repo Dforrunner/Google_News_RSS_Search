@@ -107,6 +107,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  margin-top: 60px;
+}
+
 .error-msg {
   color: darkred;
 }

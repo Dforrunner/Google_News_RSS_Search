@@ -1,5 +1,6 @@
 @import "search_pg";
 @import "navbar";
+@import "variables";
 
 *{
   box-sizing: border-box;
@@ -9,6 +10,11 @@ body{
   margin: 0;
   overflow-x: hidden;
 }
+
+main{
+  margin-top: $nav-height;
+}
+
 .error-msg{
   color: darkred;
 }

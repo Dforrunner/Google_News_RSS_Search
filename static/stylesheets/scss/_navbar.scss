@@ -1,3 +1,5 @@
+@import "variables";
+
 nav{
   display: flex;
   flex-direction: row-reverse;
@@ -6,7 +8,7 @@ nav{
   top: 0;
   left: 0;
   width: 100vw;
-  height: 60px;
+  height: $nav-height;
   z-index: 10;
   background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
 
