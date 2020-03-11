@@ -4,7 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "debug": "nodemon --inspect ./app.js"
+    "dev": "nodemon --inspect ./app.js",
+    "start": "pm2 start app.js",
+    "stop": "pm2 stop app.js",
+    "restart": "pm2 reload app.js",
+    "reload": "pm2 reload app.js"
   },
   "keywords": [],
   "author": "",
