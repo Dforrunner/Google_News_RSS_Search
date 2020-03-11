@@ -69,7 +69,7 @@
     justify-content: space-between;
 
     list-style: none;
-    height: 40px;
+    height: $li-height;
     padding-top: 10px;
     border-top: 1px solid #4e4e4e;
     font-size: 14px;
@@ -78,6 +78,9 @@
       background-color: #cdfff5;
     }
 
+    a{
+      padding-left: 10px;
+    }
     cite {
       color: rgba(74, 74, 74, 0.86);
     }

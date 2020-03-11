@@ -47,7 +47,7 @@ function parseXML2JSON(xml, callback){
         for(let item of channel){
             // Convert pubDate into proper format
             let pubDate = formatPubDate(item.pubDate[0]);
-            values.push([pubDate, item.title[0], item.link[0], item.source[0]['_']]);
+            values.push([pubDate, item.title[0], item.link[0], item.source[0]['_'], item.guid[0]['_']]);
         }
 
         callback(values);

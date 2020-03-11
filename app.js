@@ -37,12 +37,16 @@ app.use(flash());
 app.use((req, res, next) =>{
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error = req.flash('error');
+    res.locals.isAuthenticated = req.isAuthenticated();
+    res.locals.userID = null;
+    if(req.isAuthenticated()) res.locals.userID = req.user.UserID;
     next();
 });
 
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/article', require('./routes/article'));
 
 // 404 Page not found Response
 app.use((req, res)=>{

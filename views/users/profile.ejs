@@ -1,3 +1,18 @@
-<h1>Profile</h1>
-<h2>Welcome <%= name %></h2>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<header id="profileHeader">
+    <h1>Welcome <%= name %></h1>
+    <h2>Saved Articles:</h2>
+</header>
+
+<section>
+    <% if(articles) { %>
+        <ul id="profileList">
+            <%for(let i=0; i<articles.length; i++) { %>
+            <li id="listIndex-<%=articles[i].ArticleID%>">
+                <button class="btn btn-dark" data-articleID='<%=articles[i].ArticleID %>' onclick="return deleteArticle(this.getAttribute('data-articleID'))"> Delete </button>
+                <a href="<%= articles[i].href %>" target="_blank"><%= articles[i].title %></a>
+                <cite><%= articles[i].source %></cite>
+            </li>
+            <% } %>
+        </ul>
+    <% } %>
+</section>

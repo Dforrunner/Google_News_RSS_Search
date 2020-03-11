@@ -55,7 +55,7 @@
   flex-direction: row;
   justify-content: space-between;
   list-style: none;
-  height: 40px;
+  height: 60px;
   padding-top: 10px;
   border-top: 1px solid #4e4e4e;
   font-size: 14px;
@@ -63,13 +63,17 @@
 #rss li:hover {
   background-color: #cdfff5;
 }
+#rss li a {
+  padding-left: 10px;
+}
 #rss li cite {
   color: rgba(74, 74, 74, 0.86);
 }
 
 nav {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  justify-content: flex-end;
   position: fixed;
   top: 0;
   left: 0;
@@ -113,6 +117,23 @@ main {
 
 .error-msg {
   color: darkred;
+}
+
+.remove {
+  animation: fadeOut 0.4s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    margin-top: 0;
+    display: inline;
+  }
+  to {
+    opacity: 0;
+    margin-top: -24px;
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

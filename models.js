@@ -38,19 +38,27 @@ const Article = {
                         title VARCHAR(255) NOT NULL,
                         link VARCHAR(2048) NOT NULL,
                         source VARCHAR(64),
+                        guid TEXT NOT NULL,
                         user_id INT UNSIGNED,
                         PRIMARY KEY (ArticleID),
                         CONSTRAINT FK1 FOREIGN KEY (user_id) REFERENCES user(UserID) ON DELETE CASCADE
                     )
                 `
     },
-    createOne: `
-        INSERT INTO Articles (pubDate, title, link, source, UserID) 
-        VALUES (?, ?, ?, ?, ?)
+    insertOne: `
+        INSERT INTO articles (pubDate, title, link, source, guid, user_id) 
+        VALUES (?, ?, ?, ?, ?, ?)
     `,
-    createMultiple: `
-        INSERT INTO Articles (pubDate, title, link, source, UserID) 
+    insertMultiple: `
+        INSERT INTO articles (pubDate, title, link, source, guid, user_id) 
         VALUES ?
+    `,
+    delete: `
+        DELETE FROM articles 
+        WHERE ArticleID = ?
+    `,
+    getUserArticles: `
+        SELECT * FROM articles WHERE user_id = ?
     `
 };
 

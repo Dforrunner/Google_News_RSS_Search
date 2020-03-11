@@ -43,7 +43,6 @@ module.exports = function (passport) {
     passport.deserializeUser((id, done) => {
         db.query(User.getById, [id], (err, rows) => {
             console.log('De-serializing user...');
-            //console.log(rows[0]);
             done(null, rows[0]);
         });
     });

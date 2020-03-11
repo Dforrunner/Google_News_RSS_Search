@@ -18,3 +18,21 @@ main{
 .error-msg{
   color: darkred;
 }
+
+.remove{
+  animation: fadeOut 0.4s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    margin-top: 0;
+    display: inline;
+
+  }
+  to{
+    opacity: 0;
+    margin-top: -($li-height/2.5);
+    display: none;
+  }
+}

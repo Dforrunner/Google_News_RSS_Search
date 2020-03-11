@@ -7,24 +7,36 @@ const { ensureAuthenticated } = require('../config/auth');
 const { User, Article} = require('../models');
 
 // User profile
-router.get('/profile', ensureAuthenticated, (req, res) =>
-    res.render('users/profile', {
-        name: req.user.name
-    })
-);
+router.get('/profile', ensureAuthenticated, (req, res) =>{
+    // Query for articles that were saved by user
+    db.query(Article.getUserArticles, [req.user.UserID], (err, rows) => {
+        if(err) throw err;
+
+        if(rows.length){
+            res.render('users/profile', {
+                name: req.user.name,
+                articles: rows
+            })
+        }else{
+            res.render('users/profile', {
+                name: req.user.name,
+                articles: false
+            })
+        }
+    });
+
+});
 
 // Login Page
 router.get('/login', (req, res) =>  res.render('users/login'));
 
 // Login handle
 router.post('/login', passport.authenticate('local', {
-        successRedirect: '/users/profile',
         failureRedirect: '/users/login',
         failureFlash: true
     }), (req, res) => {
-        console.log("hello");
-        req.session.cookie.expires = false;
-        res.redirect('/');
+        req.session.cookie.maxAge = 24 * 3600000;
+        res.redirect('/users/profile');
     });
 
 // Logout handle
@@ -107,8 +119,5 @@ router.post('/register', (req, res) => {
         });
     }
 });
-
-
-
 
 module.exports = router;
