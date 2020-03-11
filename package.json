@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon --inspect ./app.js",
+    "build": "npm install pm2@latest -g",
     "start": "pm2 start app.js",
     "stop": "pm2 stop app.js",
     "restart": "pm2 reload app.js",
@@ -24,7 +25,8 @@
     "node-fetch": "^2.6.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "xml2js": "^0.4.23"
+    "xml2js": "^0.4.23",
+    "pm2": "^4.2.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
