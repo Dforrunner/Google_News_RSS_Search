@@ -42,7 +42,6 @@ module.exports = function (passport) {
     // Deserialize the user from session
     passport.deserializeUser((id, done) => {
         db.query(User.getById, [id], (err, rows) => {
-            console.log('De-serializing user...');
             done(null, rows[0]);
         });
     });
