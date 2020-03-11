@@ -101,7 +101,66 @@ nav a:hover {
   color: white;
   box-shadow: 0 0 3px 1px gray;
 }
+nav div {
+  margin-right: 30px;
+}
 
+#profileHeader {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  padding: 30px;
+  background-color: white;
+  width: 100vw;
+  box-shadow: 0 0 5px 1px gray;
+}
+#profileHeader h1 {
+  font-size: 25px;
+}
+#profileHeader h2 {
+  font-size: 22px;
+}
+
+#profileContent {
+  margin-top: 200px;
+}
+#profileContent div {
+  padding: 40px;
+}
+
+#profileList li {
+  list-style: none;
+  min-height: 60px;
+  padding-top: 10px;
+  border-bottom: 1px solid #4e4e4e;
+  font-size: 14px;
+}
+#profileList li:hover {
+  background-color: #cdfff5;
+}
+#profileList li a {
+  padding-left: 10px;
+}
+#profileList li cite {
+  color: rgba(74, 74, 74, 0.86);
+}
+
+.remove {
+  animation: fadeOut 0.4s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+    display: inline;
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+    display: none;
+  }
+}
 * {
   box-sizing: border-box;
 }
@@ -117,23 +176,6 @@ main {
 
 .error-msg {
   color: darkred;
-}
-
-.remove {
-  animation: fadeOut 0.4s ease-out forwards;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    margin-top: 0;
-    display: inline;
-  }
-  to {
-    opacity: 0;
-    margin-top: -24px;
-    display: none;
-  }
 }
 
 /*# sourceMappingURL=main.css.map */

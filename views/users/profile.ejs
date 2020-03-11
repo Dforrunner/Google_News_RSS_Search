@@ -1,9 +1,9 @@
 <header id="profileHeader">
-    <h1>Welcome <%= name %></h1>
-    <h2>Saved Articles:</h2>
+    <h1>Welcome <%= name %>!</h1>
+    <h2>Here are your saved articles:</h2>
 </header>
 
-<section>
+<section id="profileContent">
     <% if(articles) { %>
         <ul id="profileList">
             <%for(let i=0; i<articles.length; i++) { %>
@@ -14,5 +14,12 @@
             </li>
             <% } %>
         </ul>
+    <% } %>
+
+    <% if(!articles) { %>
+        <div>
+            <p>You don't have any saved articles. </p>
+            <a href="/" class="btn btn-secondary">Search Articles</a>
+        </div>
     <% } %>
 </section>
