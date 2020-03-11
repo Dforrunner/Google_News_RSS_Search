@@ -45,5 +45,4 @@ module.exports = function (passport) {
             done(null, rows[0]);
         });
     });
-
 };
